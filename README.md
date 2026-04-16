@@ -5,14 +5,14 @@
       <br>
       Projeto proposto na disciplina Estrutura de Dados 1, pelo professor Reudismam - UFERSA </br>
   </samp>
-# 🎮 Jogo da Forca Multijogador em C - VERSÃO 1.0
   
   ![Status do Projeto](https://img.shields.io/badge/Status-Conclu%C3%ADdo-brightgreen)
 ![Linguagem](https://img.shields.io/badge/Linguagem-C-blue)
 ![Curso](https://img.shields.io/badge/Disciplina-Algoritmos%20e%20ED-orange)
       </div>
-  
+
 ---
+  ### 🎮 Jogo da Forca Multijogador em C - Versão 1.0
 ### Desenvolvido por: 
 - **Rubens Guilherme.** 
 - **Luan Kaue.** 
