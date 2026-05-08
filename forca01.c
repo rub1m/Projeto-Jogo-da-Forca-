@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <locale.h>
 enum CategoriaTema { ANIMAL = 0, FRUTA = 1, PAIS = 2 };
+enum NivelDificuldade { FACIL = 0, MEDIO = 1, DIFICIL = 2 };
 struct Jogador {
     char nome[30];
     int vidas; 
@@ -24,28 +25,44 @@ struct JogoForca {
 };
 void inicializarJogo(struct JogoForca *jogo) {
     char bancoPalavras[3][20] = {"CACHORRO", "ABACAXI", "ARGENTINA"};
-  // o "srand" é usado pra que sorteie aleatoriamente a palavra, gerando um contexto
-   srand(time(NULL));
+    srand(time(NULL));
     int indiceSorteio = rand() % 3;
     strcpy(jogo->rodada.palavraDificil, bancoPalavras[indiceSorteio]);
     jogo->rodada.tema = (enum CategoriaTema)indiceSorteio;
     int tamanhoPalavra = strlen(jogo->rodada.palavraDificil);
-   
-  // Aqui faz a montagem da palavra
-  for (int i = 0; i < tamanhoPalavra; i++) {
+    
+    for (int i = 0; i < tamanhoPalavra; i++) {
         jogo->rodada.palavraOculta[i] = '_';
     }
-  
+    
     jogo->rodada.palavraOculta[tamanhoPalavra] = '\0'; 
 
-    //parte que estamos  Configurando os jogadores
+    int nivel;
+    printf("Escolha o nível de dificuldade (0-Fácil, 1-Médio, 2-Difícil): ");
+    scanf("%d", &nivel);
+    switch (nivel) {
+        case FACIL: 
+            jogo->jogadores[0].vidas = 5; 
+            jogo->jogadores[1].vidas = 5; 
+            break;
+        case MEDIO: 
+            jogo->jogadores[0].vidas = 3; 
+            jogo->jogadores[1].vidas = 3; 
+            break;
+        case DIFICIL: 
+            jogo->jogadores[0].vidas = 2; 
+            jogo->jogadores[1].vidas = 2; 
+            break;
+        default: 
+            printf("Nível inválido! Usando nível médio.\n");
+            jogo->jogadores[0].vidas = 3;
+            jogo->jogadores[1].vidas = 3;
+    }
+
     printf("Digite o nome do Jogador 1: ");
     scanf("%29s", jogo->jogadores[0].nome);
-    jogo->jogadores[0].vidas = 3;
-
     printf("Digite o nome do Jogador 2: ");
     scanf("%29s", jogo->jogadores[1].nome);
-    jogo->jogadores[1].vidas = 3;
 
     jogo->turnoAtual = 0;
     jogo->totalTentativas = 0;
