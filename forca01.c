@@ -121,6 +121,14 @@ int main() {
             jogoRodando = 0;
         }
     }
+    
+    char opcao;
+    printf("Deseja jogar novamente? (s/n): ");
+    scanf(" %c", &opcao);
+    if (opcao == 's' || opcao == 'S') {
+        inicializarJogo(meuJogo);
+    }
+    
     free(meuJogo->letrasTentadas);
     free(meuJogo);
     return 0;
